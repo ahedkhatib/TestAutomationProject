@@ -23,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EditMetadataTest {
     private WebDriver driver;
+    private LoginPage loginPage;
 
     @BeforeEach
     public void setUp() {
@@ -40,12 +41,12 @@ public class EditMetadataTest {
         } catch (TimeoutException err) {
             System.out.println("Ngrok warning page was not loaded");
         }
-        //loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(driver);
     }
 
     @Test
     public void testEditTitleMetadata() {
-        String successMessage = new LoginPage(driver)
+        String successMessage = loginPage
                 .loginAs("admin", "admin123")
                 .openBookById("10")
                 .clickEditMetadata()

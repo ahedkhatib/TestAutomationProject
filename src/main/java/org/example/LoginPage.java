@@ -24,6 +24,7 @@ public class LoginPage {
 
 
     public LoginPage(WebDriver driver){
+        System.out.println("bbbbbbbbbbbbbbbbbbbbbb");
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
