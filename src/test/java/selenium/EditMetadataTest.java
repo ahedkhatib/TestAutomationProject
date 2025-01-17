@@ -35,6 +35,7 @@ public class EditMetadataTest {
             Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
             WebElement visitSiteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Visit Site']")));
             visitSiteButton.click();
+            System.out.println("Ngrok warning page bypassed.");
         } catch (TimeoutException err) {
             System.out.println("Ngrok warning page was not loaded");
         }
