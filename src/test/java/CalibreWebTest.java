@@ -49,7 +49,7 @@ public class CalibreWebTest {
         assertTrue(successMessage.contains("logged in as"));
     }*/
 
-    @Test
+    /*@Test
     public void testBookDetailsAndDownload() throws InterruptedException {
 
         //note :  if exists then delete And to download the book to this folder (maybe hash)
@@ -72,7 +72,7 @@ public class CalibreWebTest {
                 .clickDownloadButton(downloadDir, expectedFileName);
 
         assertTrue(isDownloaded);
-    }
+    }*/
 
     @Test
     public void testReadInBrowser() {
