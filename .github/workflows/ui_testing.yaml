@@ -1,56 +1,79 @@
-name: UI Testing
+name: UI testing
 
 on:
   workflow_dispatch:
     inputs:
       grid_url:
-        description: "Grid URL to run the tests (e.g., local or remote)"
         required: true
         type: string
+        description: Grid to run tests on (local by default)
         default: http://localhost:4444
-      run_chrome:
-        description: "Run tests on Chrome"
+
+      chrome_131_0:
+        description: 'Chrome (131.0)'
         required: false
         type: boolean
-      run_firefox:
-        description: "Run tests on Firefox"
+
+      firefox_133_0:
+        description: 'Firefox (133.0)'
         required: false
         type: boolean
 
 jobs:
-  Test_Chrome:
-    name: Run Tests on Chrome
+  TestChrome_131_0:
+    name: Test Chrome 131.0
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.run_chrome == 'true' }}
+    if: ${{ github.event.inputs.chrome_131_0 == 'true' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up JDK
+      - name: Set up JDK 23
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '23'
 
-      - name: Check Maven Version
-        run: mvn -version
-
-      - name: Install Maven (if needed)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y maven
-
-      - name: Launch Selenium Grid - Chrome
+      - name: Launch standalone grid - Chrome
         if: ${{ contains(github.event.inputs.grid_url, 'localhost') }}
         run: |
-          docker run --name chrome-grid -d -p 4444:4444 --shm-size=2gb selenium/standalone-chrome:latest
+          docker run --name grid_container -d -p 4444:4444 --shm-size=2gb selenium/standalone-chrome:131.0-chromedriver-131.0-grid-4.27.0-20250101
 
       - name: Run Tests
         run: |
           export BROWSER=chrome
-          export GRID_URL=https://5f69-2a06-c701-7116-c00-1677-13ff-c635-10a9.ngrok-free.app
-          mvn test -Dtest=**/selenium/*
+          export GRID_URL=${{ github.event.inputs.grid_url }}
+          
+          mvn -q test
+          
+          # Tear down grid if exists
+          docker stop grid_container || true
 
-      - name: Stop Selenium Grid
+  TestFirefox_133_0:
+    name: Test Firefox 133.0
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.firefox_133_0 == 'true' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 23
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '23'
+
+      - name: Launch standalone grid - Firefox
         if: ${{ contains(github.event.inputs.grid_url, 'localhost') }}
-        run: docker stop chrome-grid
+        run: |
+          docker run --name grid_container -d -p 4444:4444 --shm-size=2gb selenium/standalone-firefox:133.0-geckodriver-0.35-grid-4.27.0-20250101
+
+      - name: Run Tests
+        run: |
+          export BROWSER=firefox
+          export GRID_URL=${{ github.event.inputs.grid_url }}
+          
+          mvn test -q
+          
+          # Tear down grid if exists
+          docker stop grid_container || true

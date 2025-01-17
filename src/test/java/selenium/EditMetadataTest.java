@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static org.example.DriverFactory.getDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -26,7 +27,7 @@ public class EditMetadataTest {
     @BeforeEach
     public void setUp() {
 
-        driver = new ChromeDriver();
+        driver = getDriver();
         //driver.manage().window().maximize();
         driver.get("https://5f69-2a06-c701-7116-c00-1677-13ff-c635-10a9.ngrok-free.app");
 
