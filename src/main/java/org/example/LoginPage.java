@@ -29,7 +29,7 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    public HomePage loginAs(String username, String password) {
+    /*public HomePage loginAs(String username, String password) {
         System.out.println("Navigating to login page...");
         System.out.println("Current URL: " + driver.getCurrentUrl());
 
@@ -49,17 +49,17 @@ public class LoginPage {
         System.out.println("Login button clicked.");
 
         return new HomePage(driver);
-    }
-    /*public HomePage loginAs(String username, String password){
+    }*/
+    public HomePage loginAs(String username, String password){
         wait.until(ExpectedConditions.visibilityOf(usernameField)).sendKeys(username);
         wait.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(password);
         wait.until(ExpectedConditions.elementToBeClickable(loginButton)).click();
         return new HomePage(driver);
-        *//*usernameField.sendKeys(username);
+        /*usernameField.sendKeys(username);
         passwordField.sendKeys(password);
         loginButton.click();
-        return new HomePage(driver);*//*
-    }*/
+        return new HomePage(driver);*/
+    }
 
 
 
