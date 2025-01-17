@@ -30,7 +30,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '23'
 
       - name: Launch Selenium Grid - Chrome
         if: ${{ contains(github.event.inputs.grid_url, 'localhost') }}
@@ -59,7 +59,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '23'
 
       - name: Launch Selenium Grid - Firefox
         if: ${{ contains(github.event.inputs.grid_url, 'localhost') }}
