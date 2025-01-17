@@ -31,6 +31,7 @@ public class EditMetadataTest {
         //driver.manage().window().maximize();
         driver.get("https://5f69-2a06-c701-7116-c00-1677-13ff-c635-10a9.ngrok-free.app/login");
 
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaa");
         try {
             Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
             WebElement visitSiteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Visit Site']")));
