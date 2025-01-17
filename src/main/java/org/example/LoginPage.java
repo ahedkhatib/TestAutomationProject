@@ -13,6 +13,7 @@ import java.time.Duration;
 public class LoginPage {
     private WebDriver driver;
     private WebDriverWait wait;
+
     @FindBy(id = "username")
     private WebElement usernameField;
 
