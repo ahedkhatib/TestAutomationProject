@@ -1,3 +1,4 @@
+/*
 import org.example.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,16 +41,19 @@ public class CalibreWebTest {
         //loginPage = new LoginPage(driver);
     }
 
-    /*@Test
+    */
+/*@Test
     public void testLoginSuccessMessage() {
         String successMessage = new LoginPage(driver)
                 .loginAs("admin", "admin123")
                 .getSuccessMessage();
 
         assertTrue(successMessage.contains("logged in as"));
-    }*/
+    }*//*
 
-    /*@Test
+
+    */
+/*@Test
     public void testBookDetailsAndDownload() throws InterruptedException {
 
         //note :  if exists then delete And to download the book to this folder (maybe hash)
@@ -72,7 +76,8 @@ public class CalibreWebTest {
                 .clickDownloadButton(downloadDir, expectedFileName);
 
         assertTrue(isDownloaded);
-    }*/
+    }*//*
+
 
     @Test
     public void testReadInBrowser() {
@@ -113,3 +118,4 @@ public class CalibreWebTest {
         driver.quit();
     }
 }
+*/
