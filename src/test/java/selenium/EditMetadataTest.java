@@ -26,7 +26,7 @@ public class EditMetadataTest {
 
     @BeforeEach
     public void setUp() {
-
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaa");
         driver = getDriver();
         //driver.manage().window().maximize();
         driver.get("https://5f69-2a06-c701-7116-c00-1677-13ff-c635-10a9.ngrok-free.app/login");
