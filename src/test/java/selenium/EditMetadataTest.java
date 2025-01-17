@@ -19,7 +19,7 @@ public class EditMetadataTest {
     public void setUp() {
 
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         driver.get("http://localhost:8083");
 
         //loginPage = new LoginPage(driver);
