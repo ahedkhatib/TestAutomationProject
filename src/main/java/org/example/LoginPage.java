@@ -29,9 +29,8 @@ public class LoginPage {
     }
 
     public HomePage loginAs(String username, String password){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement usernameWait = wait.until(ExpectedConditions.visibilityOfElementLocated((By) usernameField));
-        usernameWait.sendKeys(username);
+
+        usernameField.sendKeys(username);
         passwordField.sendKeys(password);
         loginButton.click();
         return new HomePage(driver);
