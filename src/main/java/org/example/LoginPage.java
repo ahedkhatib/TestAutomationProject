@@ -30,11 +30,14 @@ public class LoginPage {
     }
 
     public HomePage loginAs(String username, String password){
-
-        usernameField.sendKeys(username);
+        wait.until(ExpectedConditions.visibilityOf(usernameField)).sendKeys(username);
+        wait.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(password);
+        wait.until(ExpectedConditions.elementToBeClickable(loginButton)).click();
+        return new HomePage(driver);
+        /*usernameField.sendKeys(username);
         passwordField.sendKeys(password);
         loginButton.click();
-        return new HomePage(driver);
+        return new HomePage(driver);*/
     }
 
 
