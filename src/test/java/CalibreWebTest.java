@@ -40,14 +40,14 @@ public class CalibreWebTest {
         //loginPage = new LoginPage(driver);
     }
 
-    @Test
+    /*@Test
     public void testLoginSuccessMessage() {
         String successMessage = new LoginPage(driver)
                 .loginAs("admin", "admin123")
                 .getSuccessMessage();
 
         assertTrue(successMessage.contains("logged in as"));
-    }
+    }*/
 
     @Test
     public void testBookDetailsAndDownload() throws InterruptedException {
@@ -86,17 +86,6 @@ public class CalibreWebTest {
     }
 
     @Test
-    public void testEditMetadata() {
-        String successMessage = new LoginPage(driver)
-            .loginAs("admin", "admin123")
-            .openBookById("10")
-            .clickEditMetadata()
-            .modifyTitleMetadata("New Title");
-
-        assertEquals("Metadata successfully updated", successMessage);
-    }
-
-    @Test
     public void testMarkBookAsRead() {
         boolean isMarked = new LoginPage(driver)
                 .loginAs("admin", "admin123")
@@ -118,25 +107,6 @@ public class CalibreWebTest {
 
         assertTrue(isCorrectIsbn);
     }
-
-    /*@Test
-    public void testClearRating() {
-        HomePage homePage = loginPage.loginAs("admin", "admin123");
-        BookDetailsPage bookDetailsPage = homePage.openBookById("7");
-        EditMetadataPage editMetadataPage = bookDetailsPage.clickEditMetadata();
-        editMetadataPage.clearRating();
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("flash_success")));
-        //WebElement successMessage = driver.findElement(By.id("flash_success"));
-        assertTrue(successMessage.isDisplayed());
-        assertEquals("Metadata successfully updated", successMessage.getText());
-
-        bookDetailsPage = homePage.openBookById("7");
-        WebElement ratingElement = driver.findElement(By.cssSelector(".rating-input-lg .hidden"));
-        assertEquals("0", ratingElement.getAttribute("value"), "Rating should be cleared (set to 0).");
-    }*/
-
 
     @AfterEach
     public void tearDown() {

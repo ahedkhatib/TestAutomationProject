@@ -1,0 +1,77 @@
+name: UI Testing
+
+on:
+  workflow_dispatch:
+    inputs:
+      grid_url:
+        description: "Grid URL to run the tests (e.g., local or remote)"
+        required: true
+        type: string
+        default: http://localhost:4444
+      run_chrome:
+        description: "Run tests on Chrome"
+        required: false
+        type: boolean
+      run_firefox:
+        description: "Run tests on Firefox"
+        required: false
+        type: boolean
+
+jobs:
+  Test_Chrome:
+    name: Run Tests on Chrome
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.run_chrome == 'true' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Launch Selenium Grid - Chrome
+        if: ${{ contains(github.event.inputs.grid_url, 'localhost') }}
+        run: |
+          docker run --name chrome-grid -d -p 4444:4444 --shm-size=2gb selenium/standalone-chrome:latest
+
+      - name: Run Tests
+        run: |
+          export BROWSER=chrome
+          export GRID_URL=${{ github.event.inputs.grid_url }}
+          mvn test -Dtest=**/selenium/*
+
+      - name: Stop Selenium Grid
+        if: ${{ contains(github.event.inputs.grid_url, 'localhost') }}
+        run: docker stop chrome-grid
+
+  Test_Firefox:
+    name: Run Tests on Firefox
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.run_firefox == 'true' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Launch Selenium Grid - Firefox
+        if: ${{ contains(github.event.inputs.grid_url, 'localhost') }}
+        run: |
+          docker run --name firefox-grid -d -p 4444:4444 --shm-size=2gb selenium/standalone-firefox:latest
+
+      - name: Run Tests
+        run: |
+          export BROWSER=firefox
+          export GRID_URL=${{ github.event.inputs.grid_url }}
+          mvn test -Dtest=**/selenium/*
+
+      - name: Stop Selenium Grid
+        if: ${{ contains(github.event.inputs.grid_url, 'localhost') }}
+        run: docker stop firefox-grid
