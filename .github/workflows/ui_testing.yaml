@@ -7,7 +7,7 @@ on:
         description: "Grid URL to run the tests (e.g., local or remote)"
         required: true
         type: string
-        default: http://localhost:4444
+        default: https://5f69-2a06-c701-7116-c00-1677-13ff-c635-10a9.ngrok-free.app
       run_chrome:
         description: "Run tests on Chrome"
         required: false
@@ -48,7 +48,7 @@ jobs:
       - name: Run Tests
         run: |
           export BROWSER=chrome
-          export GRID_URL=https://5f69-2a06-c701-7116-c00-1677-13ff-c635-10a9.ngrok-free.app -> http://localhost:8083
+          export GRID_URL=https://5f69-2a06-c701-7116-c00-1677-13ff-c635-10a9.ngrok-free.app
           mvn test -Dtest=**/selenium/*
 
       - name: Stop Selenium Grid
