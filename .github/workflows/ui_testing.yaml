@@ -66,7 +66,7 @@ jobs:
       - name: Launch standalone grid - Edge
         if: ${{ contains(github.event.inputs.grid_url, 'localhost') }}
         run: |
-          docker run --name grid_container -d -p 4444:4444 --shm-size=2gb selenium/standalone-edge:117.0-geckodriver-0.35-grid-4.27.0-20250101
+          docker run --name grid_container -d -p 4444:4444 --shm-size=2gb selenium/standalone-edge:117.0-msedgedriver-117.0-grid-4.27.0-20250101
 
       - name: Run Tests
         run: |
