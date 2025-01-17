@@ -63,7 +63,7 @@ public class EditMetadataTest {
         assertEquals("New Title", actualTitle);
     }
 
-    /*@Test
+    @Test
     public void testEditAuthorMetadata() {
         String successMessage = new LoginPage(driver)
                 .loginAs("admin", "admin123")
@@ -141,7 +141,7 @@ public class EditMetadataTest {
 
         assertEquals("Metadata successfully updated", successMessage);
         assertEquals(3, actualRating);
-    }*/
+    }
 
     /*@Test
     public void testClearRating() {
