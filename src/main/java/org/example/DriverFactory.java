@@ -3,6 +3,8 @@ package org.example;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -41,8 +43,8 @@ public class DriverFactory {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             return new RemoteWebDriver(hubUrl, options);
-        } else if (browser.equalsIgnoreCase("firefox")) {
-            FirefoxOptions options = new FirefoxOptions();
+        } else if (browser.equalsIgnoreCase("edge")) {
+            EdgeOptions options = new EdgeOptions();
             options.addArguments("-headless");
             return new RemoteWebDriver(hubUrl, options);
         } else {
@@ -53,8 +55,8 @@ public class DriverFactory {
     private static WebDriver getLocalDriver(String browser) {
         if (browser.equalsIgnoreCase("chrome")) {
             return new ChromeDriver();
-        } else if (browser.equalsIgnoreCase("firefox")) {
-            return new FirefoxDriver();
+        } else if (browser.equalsIgnoreCase("edge")) {
+            return new EdgeDriver();
         } else {
             throw new IllegalArgumentException("Unsupported browser: " + browser);
         }

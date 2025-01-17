@@ -30,7 +30,7 @@ public class EditMetadataTest {
         //System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaa");
         //System.out.println("BeforeEach is running...");
         driver = getDriver();
-        //driver.manage().window().maximize();
+        driver.manage().window().maximize();
         driver.get("https://5f69-2a06-c701-7116-c00-1677-13ff-c635-10a9.ngrok-free.app/login");
 
         //System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaa");

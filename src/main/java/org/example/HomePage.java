@@ -1,6 +1,7 @@
 package org.example;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,6 +27,7 @@ public class HomePage {
 
     public BookDetailsPage openBookById(String bookId) {
         String bookcssSelector = String.format("a[href=\"/book/%s\"]", bookId);
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement book = wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector(bookcssSelector))));
 
