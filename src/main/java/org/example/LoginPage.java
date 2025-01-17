@@ -29,16 +29,37 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    public HomePage loginAs(String username, String password){
+    public HomePage loginAs(String username, String password) {
+        System.out.println("Navigating to login page...");
+        wait.until(ExpectedConditions.urlContains("/login"));
+
+        System.out.println("Waiting for username field...");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("username")));
+        usernameField.sendKeys(username);
+        System.out.println("Username entered.");
+
+        System.out.println("Waiting for password field...");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("password")));
+        passwordField.sendKeys(password);
+        System.out.println("Password entered.");
+
+        System.out.println("Waiting for login button...");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("button[type='submit']")));
+        loginButton.click();
+        System.out.println("Login button clicked.");
+
+        return new HomePage(driver);
+    }
+    /*public HomePage loginAs(String username, String password){
         wait.until(ExpectedConditions.visibilityOf(usernameField)).sendKeys(username);
         wait.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(password);
         wait.until(ExpectedConditions.elementToBeClickable(loginButton)).click();
         return new HomePage(driver);
-        /*usernameField.sendKeys(username);
+        *//*usernameField.sendKeys(username);
         passwordField.sendKeys(password);
         loginButton.click();
-        return new HomePage(driver);*/
-    }
+        return new HomePage(driver);*//*
+    }*/
 
 
 
