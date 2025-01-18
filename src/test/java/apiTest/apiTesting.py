@@ -1,3 +1,4 @@
+import os
 import unittest
 from calibre.library import db
 
@@ -6,7 +7,8 @@ class TestCalibreLibrary(unittest.TestCase):
     def setUp(self):
         """Set up the Calibre database connection."""
         #library_path = r"C:\Users\2020\Documents\Visual Studio 2019\calibre-web\library"
-        library_path = r"C:\Users\2020\IdeaProjects\TestAutomationProject\library"
+        script_dir = os.path.dirname(__file__)  # Directory of this script
+        library_path = os.path.abspath(os.path.join(script_dir, "..", "..", "..", "..", "library"))
         self.calibre_db = db(library_path).new_api
 
     def test_connection(self):
