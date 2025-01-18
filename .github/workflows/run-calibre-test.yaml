@@ -1,0 +1,24 @@
+name: Run Calibre Tests on Windows
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Calibre
+        run: |
+          choco install calibre -y
+          echo "Calibre installed successfully"
+
+      - name: Verify Calibre Installation
+        run: calibre-debug --version
+
+      - name: Run Calibre Tests
+        run: |
+          python src/test/java/apiTest/run_tests.py

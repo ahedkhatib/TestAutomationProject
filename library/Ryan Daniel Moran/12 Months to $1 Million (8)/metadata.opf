@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="uuid_id" version="2.0">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+        <dc:identifier opf:scheme="calibre" id="calibre_id">8</dc:identifier>
+        <dc:identifier opf:scheme="uuid" id="uuid_id">d5c93b59-6ad4-413e-925c-f15757da92bf</dc:identifier>
+        <dc:title>12 Months to $1 Million</dc:title>
+        <dc:creator opf:file-as="Moran, Ryan Daniel" opf:role="aut">Ryan Daniel Moran</dc:creator>
+        <dc:contributor opf:file-as="calibre" opf:role="bkp">calibre (7.22.0) [https://calibre-ebook.com]</dc:contributor>
+        <dc:date>2020-02-26T00:00:00+00:00</dc:date>
+        <dc:description>&lt;p&gt;&lt;strong&gt;This is the road map to a seven-figure business . . . in one year or less&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;The word "entrepreneur" is today's favorite buzzword, and any aspiring business owner has likely encountered an overwhelming number of so-called "easy paths to success." &lt;/p&gt; &lt;p&gt;The truth is that building a real, profitable, sustainable business requires thousands of hours of commitment, grit, and hard work. It's no wonder why more than half of new businesses close within six years of opening, and fewer than 5 percent will ever earn more than $1 million annually. 12 Months to $1 Million condenses the startup phase into one fast-paced year that has helped hundreds of new entrepreneurs hit the million-dollar level by using an exclusive and foolproof formula. &lt;/p&gt; &lt;p&gt;By cutting out the noise and providing a clear and proven plan, this roadmap helps even brand-new entrepreneurs make decisions quickly, get their product up for sale, and launch it to a crowd that is ready and waiting to...</dc:description>
+        <dc:publisher>BenBella Books, Inc.</dc:publisher>
+        <dc:identifier opf:scheme="ISBN">9781950665143</dc:identifier>
+        <dc:language>eng</dc:language>
+        <meta name="calibre:timestamp" content="2024-12-22T10:20:05.723384+00:00"/>
+        <meta name="calibre:title_sort" content="12 Months to $1 Million"/>
+    </metadata>
+    <guide>
+        <reference type="cover" title="Cover" href="cover.jpg"/>
+    </guide>
+</package>

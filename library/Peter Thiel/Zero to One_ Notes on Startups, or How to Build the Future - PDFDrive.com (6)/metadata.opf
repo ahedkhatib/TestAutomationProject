@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="uuid_id" version="2.0">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+        <dc:identifier opf:scheme="calibre" id="calibre_id">6</dc:identifier>
+        <dc:identifier opf:scheme="uuid" id="uuid_id">7b6a8c9a-555f-4c9d-8973-e67a4479a701</dc:identifier>
+        <dc:title>Zero to One: Notes on Startups, or How to Build the Future - PDFDrive.com</dc:title>
+        <dc:creator opf:file-as="Thiel, Peter &amp; Masters, Blake" opf:role="aut">Peter Thiel</dc:creator>
+        <dc:creator opf:file-as="Thiel, Peter &amp; Masters, Blake" opf:role="aut">Blake Masters</dc:creator>
+        <dc:contributor opf:file-as="calibre" opf:role="bkp">calibre (7.22.0) [https://calibre-ebook.com]</dc:contributor>
+        <dc:date>2014-09-16T00:00:00+00:00</dc:date>
+        <dc:publisher>Crown Publishing Group</dc:publisher>
+        <dc:identifier opf:scheme="MOBI-ASIN">B00J6YBOFQ</dc:identifier>
+        <dc:identifier opf:scheme="ISBN">9780804139304</dc:identifier>
+        <dc:language>eng</dc:language>
+        <meta name="calibre:rating" content="10"/>
+        <meta name="calibre:timestamp" content="2024-12-18T16:35:27+00:00"/>
+        <meta name="calibre:title_sort" content="Zero to One: Notes on Startups, or How to Build the Future"/>
+    </metadata>
+    <guide>
+        <reference type="cover" title="Cover" href="cover.jpg"/>
+    </guide>
+</package>

@@ -52,7 +52,61 @@ public class EditMetadataPage {
         PageFactory.initElements(driver, this);
     }
 
-    public VerifyUpdatedMetadataPage modifyTitleMetadata(String newTitle){
+    private VerifyUpdatedMetadataPage modifyField(WebElement field, String newValue) {
+        field.clear();
+        field.sendKeys(Keys.CONTROL + "a");
+        field.sendKeys(Keys.DELETE);
+        field.sendKeys(newValue);
+
+        saveButton.click();
+
+        return new VerifyUpdatedMetadataPage(driver);
+    }
+
+    public VerifyUpdatedMetadataPage modifyTitleMetadata(String newTitle) {
+        return modifyField(titleField, newTitle);
+    }
+
+    public VerifyUpdatedMetadataPage modifyAuthorMetadata(String newAuthor) {
+        return modifyField(authorField, newAuthor);
+    }
+
+    public VerifyUpdatedMetadataPage modifyTagMetadata(String newTag) {
+        return modifyField(tagField, newTag);
+    }
+
+    public VerifyUpdatedMetadataPage modifySeriesMetadata(String newSeries) {
+        return modifyField(seriesField, newSeries);
+    }
+
+    public VerifyUpdatedMetadataPage modifySeriesIdMetadata(String newSeriesId) {
+        return modifyField(seriesId, newSeriesId);
+    }
+
+    public VerifyUpdatedMetadataPage modifyPublishedDate(String newDate) {
+        return modifyField(publishedDate, newDate);
+    }
+
+    public VerifyUpdatedMetadataPage modifyPublisher(String newPublisher) {
+        return modifyField(publisherField, newPublisher);
+    }
+
+    public VerifyUpdatedMetadataPage modifyLanguage(String newLanguage) {
+        return modifyField(languageField, newLanguage);
+    }
+
+    public VerifyUpdatedMetadataPage modifyRating(int ratingValue) {
+        WebElement star = ratingContainer.findElement(By.cssSelector("i[data-value='" + ratingValue + "']"));
+        star.click();
+
+        saveButton.click();
+
+        return new VerifyUpdatedMetadataPage(driver);
+    }
+
+
+    /// *******************************
+    /*public VerifyUpdatedMetadataPage modifyTitleMetadata(String newTitle){
         titleField.clear();
         titleField.sendKeys(newTitle);
 
@@ -103,9 +157,6 @@ public class EditMetadataPage {
         saveButton.click();
 
         return new VerifyUpdatedMetadataPage(driver);
-        /*WebElement successMessage = driver.findElement(By.id("flash_success"));
-
-        return successMessage.getText();*/
     }
 
     public VerifyUpdatedMetadataPage modifyRating(int ratingValue) {
@@ -115,12 +166,9 @@ public class EditMetadataPage {
         saveButton.click();
 
         return new VerifyUpdatedMetadataPage(driver);
-        /*WebElement successMessage = driver.findElement(By.id("flash_success"));
-
-        return successMessage.getText();*/
     }
 
-    public String clearRating() {
+    *//*public String clearRating() {
         //WebElement clearRatingButton = driver.findElement(By.cssSelector("a.rating-clear"));
 
         if (clearRatingButton.isDisplayed()) {
@@ -133,18 +181,18 @@ public class EditMetadataPage {
             return successMessage.getText();
         }
         return "Clear rating button is not visible";
-    }
+    }*//*
 
-    public String modifyPublishedDate(String newDate) {
+    public VerifyUpdatedMetadataPage modifyPublishedDate(String newDate) {
         publishedDate.clear();
         publishedDate.sendKeys(newDate);
 
         saveButton.click();
-        WebElement successMessage = driver.findElement(By.id("flash_success"));
-        return successMessage.getText();
+
+        return new VerifyUpdatedMetadataPage(driver);
     }
 
-    public String modifyPublisher(String newPublisher) {
+    public VerifyUpdatedMetadataPage modifyPublisher(String newPublisher) {
         publisherField.clear();
         publisherField.sendKeys(Keys.CONTROL + "a");
         publisherField.sendKeys(Keys.DELETE);
@@ -152,21 +200,10 @@ public class EditMetadataPage {
 
         saveButton.click();
 
-        WebElement successMessage = driver.findElement(By.id("flash_success"));
-        return successMessage.getText();
+        return new VerifyUpdatedMetadataPage(driver);
     }
 
-    public String getPublisher() {
-        driver.navigate().refresh();
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.publishers span a"))));
-
-        WebElement publisherElement = driver.findElement(By.cssSelector("div.publishers span a"));
-        return publisherElement.getText();
-    }
-
-    public String modifyLanguage(String newLanguage) {
+    public VerifyUpdatedMetadataPage modifyLanguage(String newLanguage) {
         languageField.clear();
         languageField.sendKeys(Keys.CONTROL + "a");
         languageField.sendKeys(Keys.DELETE);
@@ -174,19 +211,7 @@ public class EditMetadataPage {
 
         saveButton.click();
 
-        WebElement successMessage = driver.findElement(By.id("flash_success"));
-        return successMessage.getText();
-    }
-
-    public String getLanguage() {
-        driver.navigate().refresh();
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.languages span.label.label-default"))));
-
-        WebElement languageElement = driver.findElement(By.cssSelector("div.languages span.label.label-default"));
-        return languageElement.getText();
-    }
-
+        return new VerifyUpdatedMetadataPage(driver);
+    }*/
 
 }

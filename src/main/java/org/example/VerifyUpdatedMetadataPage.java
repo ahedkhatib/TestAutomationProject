@@ -32,6 +32,15 @@ public class VerifyUpdatedMetadataPage {
     @FindBy(css = "div.rating span.glyphicon.glyphicon-star.good")
     private List<WebElement> ratingStars;
 
+    @FindBy(css = "div.publishing-date p")
+    private WebElement date;
+
+    @FindBy(css = "div.publishers a")
+    private WebElement publishers;
+
+    @FindBy(css = "span.label.label-default")
+    private WebElement language;
+
     public VerifyUpdatedMetadataPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -63,5 +72,17 @@ public class VerifyUpdatedMetadataPage {
 
     public int getRating() {
         return ratingStars.size();
+    }
+
+    public String getDate() {
+        return date.getText();
+    }
+
+    public String getPublishers() {
+        return publishers.getText();
+    }
+
+    public String getLanguage() {
+        return language.getText();
     }
 }

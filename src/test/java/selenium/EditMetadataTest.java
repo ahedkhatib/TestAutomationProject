@@ -22,37 +22,39 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EditMetadataTest {
+    private static final String BASE_URL = "https://5f69-2a06-c701-7116-c00-1677-13ff-c635-10a9.ngrok-free.app/login";
+    private static final String USERNAME = "admin";
+    private static final String PASSWORD = "admin123";
+    private static final int WAIT_TIMEOUT = 5;
+
     private WebDriver driver;
-    private LoginPage loginPage;
+
 
     @BeforeEach
     public void setUp() {
-        //System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaa");
-        //System.out.println("BeforeEach is running...");
         driver = getDriver();
         driver.manage().window().maximize();
-        driver.get("https://5f69-2a06-c701-7116-c00-1677-13ff-c635-10a9.ngrok-free.app/login");
+        driver.get(BASE_URL);
 
-        //System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaa");
         try {
-            Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT));
             WebElement visitSiteButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Visit Site']")));
             visitSiteButton.click();
-            System.out.println("Ngrok warning page bypassed.");
         } catch (TimeoutException err) {
             System.out.println("Ngrok warning page was not loaded");
         }
-        //loginPage = new LoginPage(driver);
-        //System.out.println("LoginPage initialized.");
+    }
+
+    private EditMetadataPage loginAndEditMetadata(String bookId) {
+        return new LoginPage(driver)
+                .loginAs(USERNAME, PASSWORD)
+                .openBookById(bookId)
+                .clickEditMetadata();
     }
 
     @Test
     public void testEditTitleMetadata() {
-        //System.out.println("Test is running...");
-        String successMessage = new LoginPage(driver)
-                .loginAs("admin", "admin123")
-                .openBookById("10")
-                .clickEditMetadata()
+        String successMessage = loginAndEditMetadata("10")
                 .modifyTitleMetadata("New Title")
                 .getMessage();
 
@@ -65,10 +67,7 @@ public class EditMetadataTest {
 
     @Test
     public void testEditAuthorMetadata() {
-        String successMessage = new LoginPage(driver)
-                .loginAs("admin", "admin123")
-                .openBookById("10")
-                .clickEditMetadata()
+        String successMessage = loginAndEditMetadata("10")
                 .modifyAuthorMetadata("Ahed kh")
                 .getMessage();
 
@@ -81,10 +80,7 @@ public class EditMetadataTest {
 
     @Test
     public void testEditTagMetadata() {
-        String successMessage = new LoginPage(driver)
-                .loginAs("admin", "admin123")
-                .openBookById("10")
-                .clickEditMetadata()
+        String successMessage = loginAndEditMetadata("10")
                 .modifyTagMetadata("111111")
                 .getMessage();
 
@@ -97,10 +93,7 @@ public class EditMetadataTest {
 
     @Test
     public void testEditSeriesMetadata() {
-        String successMessage = new LoginPage(driver)
-                .loginAs("admin", "admin123")
-                .openBookById("10")
-                .clickEditMetadata()
+        String successMessage = loginAndEditMetadata("10")
                 .modifySeriesMetadata("3")
                 .getMessage();
 
@@ -113,10 +106,7 @@ public class EditMetadataTest {
 
     @Test
     public void testEditSeriesIdMetadata() {
-        String successMessage = new LoginPage(driver)
-                .loginAs("admin", "admin123")
-                .openBookById("10")
-                .clickEditMetadata()
+        String successMessage = loginAndEditMetadata("10")
                 .modifySeriesIdMetadata("5")
                 .getMessage();
 
@@ -129,10 +119,7 @@ public class EditMetadataTest {
 
     @Test
     public void testEditBookRating() {
-        String successMessage = new LoginPage(driver)
-                .loginAs("admin", "admin123")
-                .openBookById("10")
-                .clickEditMetadata()
+        String successMessage = loginAndEditMetadata("10")
                 .modifyRating(3)
                 .getMessage();
 
@@ -156,25 +143,25 @@ public class EditMetadataTest {
 
     @Test
     public void testEditPublishedDate() {
-        String successMessage = new LoginPage(driver)
-                .loginAs("admin", "admin123")
-                .openBookById("10")
-                .clickEditMetadata()
-                .modifyPublishedDate("2023-10-05");
+        String successMessage = loginAndEditMetadata("10")
+                .modifyPublishedDate("2023-10-05")
+                .getMessage();
+
+        String actualDate = new VerifyUpdatedMetadataPage(driver)
+                .getDate();
 
         assertEquals("Metadata successfully updated", successMessage);
+        assertTrue(actualDate.contains("Oct 5, 2023"));
     }
 
     @Test
     public void testEditPublisher() {
-        String successMessage = new LoginPage(driver)
-                .loginAs("admin", "admin123")
-                .openBookById("9")
-                .clickEditMetadata()
-                .modifyPublisher("BenBella Books, Inc.");
+        String successMessage = loginAndEditMetadata("9")
+                .modifyPublisher("BenBella Books, Inc.")
+                .getMessage();
 
-        String actualPublisher = new EditMetadataPage(driver)
-                .getPublisher();
+        String actualPublisher = new VerifyUpdatedMetadataPage(driver)
+                .getPublishers();
 
         assertEquals("Metadata successfully updated", successMessage);
         assertEquals("BenBella Books, Inc.", actualPublisher);
@@ -182,13 +169,11 @@ public class EditMetadataTest {
 
     @Test
     public void testEditLanguage() {
-        String successMessage = new LoginPage(driver)
-                .loginAs("admin", "admin123")
-                .openBookById("9")
-                .clickEditMetadata()
-                .modifyLanguage("English");
+        String successMessage = loginAndEditMetadata("9")
+                .modifyLanguage("English")
+                .getMessage();
 
-        String actualLanguage = new EditMetadataPage(driver)
+        String actualLanguage = new VerifyUpdatedMetadataPage(driver)
                 .getLanguage();
 
         assertEquals("Metadata successfully updated", successMessage);
