@@ -17,6 +17,9 @@ public class HomePage {
     //@FindBy(xpath = "//a[@href='/book/10']")
     //private WebElement firstBook;
 
+    @FindBy(id = "query")
+    private WebElement searchField;
+
     @FindBy(id = "flash_success")
     private WebElement successMessage;
 
@@ -34,6 +37,18 @@ public class HomePage {
         book.click();
         //driver.findElement(By.cssSelector("a[href=\"/book/10\"]")).click();
         return new BookDetailsPage(driver);
+    }
+
+    public SearchResult searchForBook(String bookTitle) {
+        searchField.clear();
+        searchField.sendKeys(bookTitle);
+        searchField.submit();
+
+
+        return new SearchResult(driver);
+        /*WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement resultTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("p.title")));
+        return resultTitle.getText();*/
     }
 
     public String getSuccessMessage() {

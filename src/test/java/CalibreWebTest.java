@@ -1,5 +1,3 @@
-package selenium;
-
 import org.example.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -128,16 +126,7 @@ public class CalibreWebTest {
 
     @AfterEach
     public void tearDown() {
-        System.out.println("Attempting to quit the driver...");
-        if (driver != null) {
-            try {
-                driver.quit();
-                System.out.println("Driver quit successfully.");
-            } catch (Exception e) {
-                System.out.println("Failed to quit the driver: " + e.getMessage());
-            }
-        }
-        //driver.quit();
+        driver.quit();
     }
 }
 
