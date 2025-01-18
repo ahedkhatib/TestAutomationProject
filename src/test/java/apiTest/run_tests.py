@@ -1,9 +1,18 @@
 import subprocess
 
+import os
+
+# Define paths based on the environment
+if os.name == "nt":  # Windows
+    debugger_command = r'"C:\Program Files\Calibre2\calibre-debug.exe"'
+    script_path = r"C:\Users\2020\IdeaProjects\TestAutomationProject\src\test\java\apiTest\apiTesting.py"
+else:  # Linux (GitHub Actions)
+    debugger_command = "calibre-debug"
+    script_path = "src/test/java/apiTest/apiTesting.py"
 
 # Path to calibre-debug.exe and script
-debugger_command = r'"C:\Program Files\Calibre2\calibre-debug.exe"'
-script_path = r"C:\Users\2020\IdeaProjects\TestAutomationProject\src\test\java\apiTest\apiTesting.py"
+#debugger_command = r'"C:\Program Files\Calibre2\calibre-debug.exe"'
+#script_path = r"C:\Users\2020\IdeaProjects\TestAutomationProject\src\test\java\apiTest\apiTesting.py"
 
 # Command to run
 command = f'{debugger_command} -e {script_path}'

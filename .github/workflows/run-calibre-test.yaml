@@ -1,11 +1,11 @@
-name: Run Calibre Tests on Windows
+name: Run Calibre Tests on Ubuntu
 
 on:
   workflow_dispatch:
 
 jobs:
   run-tests:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
@@ -13,12 +13,12 @@ jobs:
 
       - name: Install Calibre
         run: |
-          choco install calibre -y
-          echo "Calibre installed successfully"
+          sudo apt update
+          sudo apt install -y calibre
 
       - name: Verify Calibre Installation
         run: calibre-debug --version
 
       - name: Run Calibre Tests
         run: |
-          python src/test/java/apiTest/run_tests.py
+          calibre-debug -e src/test/java/apiTest/apiTesting.py
