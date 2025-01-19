@@ -21,4 +21,4 @@ jobs:
 
       - name: Run Calibre Tests
         run: |
-          calibre-debug -e src/test/java/apiTest/apiTesting.py
+          calibre-debug -e src/test/java/apiTest/apiTesting.py || exit 1
