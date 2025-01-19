@@ -5,9 +5,7 @@ from calibre.library import db
 class TestCalibreLibrary(unittest.TestCase):
 
     def setUp(self):
-        """Set up the Calibre database connection."""
-        #library_path = r"C:\Users\2020\Documents\Visual Studio 2019\calibre-web\library"
-        script_dir = os.path.dirname(__file__)  # Directory of this script
+        script_dir = os.path.dirname(__file__)
         library_path = os.path.abspath(os.path.join(script_dir, "..", "..", "..", "..", "library"))
         self.calibre_db = db(library_path).new_api
 
@@ -18,25 +16,17 @@ class TestCalibreLibrary(unittest.TestCase):
     def test_all_book_ids(self):
         """Test fetching all book IDs."""
         all_ids = self.calibre_db.all_book_ids()
-        #print("All Book IDs:", all_ids)
         self.assertEqual(all_ids, {2, 5, 6, 7, 8, 9, 10}, "all_book_ids did not return a list")
-
-    """def test_author_data(self):
-        author_data = self.calibre_db.author_data()
-        print("Author Data:", author_data)"""
 
     def test_has_id(self):
         book_id = 9
         has_id = self.calibre_db.has_id(book_id)
-        #print(f"Book {book_id} exists:", has_id)
         self.assertTrue(has_id, "Book ID should exist but was not found.")
 
     def test_get_metadata(self):
         """Test fetching metadata for a specific book."""
-
         book_id = 10
         metadata = self.calibre_db.get_metadata(book_id)
-        #print(f"Metadata for book {book_id}:", metadata)
 
         # Expected metadata
         book_metadata = {
@@ -55,8 +45,6 @@ class TestCalibreLibrary(unittest.TestCase):
         self.assertEqual(metadata.authors, book_metadata["authors"], "Authors do not match")
         self.assertEqual(metadata.tags, book_metadata["tags"], "Tags do not match")
         self.assertEqual(metadata.timestamp.isoformat(), book_metadata["timestamp"], "Timestamp does not match")
-
-
 
 
 if __name__ == "__main__":

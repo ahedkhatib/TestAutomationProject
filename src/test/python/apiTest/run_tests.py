@@ -1,24 +1,19 @@
 import subprocess
-
 import os
 
-# Define paths based on the environment
+
 if os.name == "nt":  # Windows
     debugger_command = r'"C:\Program Files\Calibre2\calibre-debug.exe"'
-    script_path = r"C:\Users\2020\IdeaProjects\TestAutomationProject\src\test\java\apiTest\apiTesting.py"
+    script_path = r"C:\Users\2020\IdeaProjects\TestAutomationProject\src\test\python\apiTest\apiTesting.py"
 else:  # Linux (GitHub Actions)
     debugger_command = "calibre-debug"
-    script_path = "src/test/java/apiTest/apiTesting.py"
-
-# Path to calibre-debug.exe and script
-#debugger_command = r'"C:\Program Files\Calibre2\calibre-debug.exe"'
-#script_path = r"C:\Users\2020\IdeaProjects\TestAutomationProject\src\test\java\apiTest\apiTesting.py"
+    script_path = r"src/test/python/apiTest/apiTesting.py"
 
 # Command to run
 command = f'{debugger_command} -e {script_path}'
 
 try:
-    # Run the command and capture output
+
     result = subprocess.run(
         command,
         shell=True,
@@ -34,7 +29,7 @@ try:
     print(result.stderr)  # Captures errors and assertion failures
 
 except subprocess.CalledProcessError as e:
-    # Handle non-zero exit codes (e.g., failed assertions)
+    # Handle non-zero exit codes
     print("Command failed with a non-zero exit code:")
     print(f"Standard Output:\n{e.stdout}")
     print(f"Standard Error:\n{e.stderr}")
