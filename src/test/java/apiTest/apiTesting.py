@@ -19,7 +19,7 @@ class TestCalibreLibrary(unittest.TestCase):
         """Test fetching all book IDs."""
         all_ids = self.calibre_db.all_book_ids()
         #print("All Book IDs:", all_ids)
-        self.assertEqual(all_ids, {2, 5, 6, 7, 8, 9, 10}, "all_book_ids did not return a list")
+        self.assertEqual(all_ids, {5, 6, 7, 8, 9, 10}, "all_book_ids did not return a list")
 
     """def test_author_data(self):
         author_data = self.calibre_db.author_data()
