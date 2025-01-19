@@ -63,7 +63,7 @@ if __name__ == "__main__":
     loader = unittest.TestLoader()
     suite = loader.loadTestsFromTestCase(TestCalibreLibrary)
     runner = unittest.TextTestRunner()
-    runner.run(suite)
+    result = runner.run(suite)
 
     if not result.wasSuccessful():
         sys.exit(1)
