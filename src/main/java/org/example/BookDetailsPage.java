@@ -17,17 +17,8 @@ public class BookDetailsPage {
     @FindBy(id = "edit_book")
     private WebElement editMetadataButton;
 
-    @FindBy(id = "btnGroupDrop1pdf")
-    private WebElement downloadButton;
-
     @FindBy(id = "readbtn")
     private WebElement readInBrowserButton;
-
-    @FindBy(id = "have_read_cb")
-    private WebElement readCheckbox;
-
-    @FindBy(css = "a.btn-xs.btn-success[role='button']")
-    private WebElement isbnButton;
 
     public BookDetailsPage(WebDriver driver){
         this.driver = driver;
@@ -39,31 +30,6 @@ public class BookDetailsPage {
         WebElement button = wait.until(ExpectedConditions.elementToBeClickable(editMetadataButton));
         button.click();
         return new EditMetadataPage(driver);
-    }
-
-    public Boolean clickDownloadButton(String downloadDir, String expectedFileName) throws InterruptedException{
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(downloadButton));
-        button.click();
-
-        return verifyFileDownloaded(downloadDir, expectedFileName);
-    }
-
-    public Boolean verifyFileDownloaded(String downloadDir, String expectedFileName) throws InterruptedException {
-        File downloadFolder = new File(downloadDir);
-        File downloadedFile = new File(downloadFolder, expectedFileName);
-
-        int timeout = 30;
-        while (timeout > 0 && !downloadedFile.exists()) {
-            Thread.sleep(1000);
-            timeout--;
-        }
-
-        if (!downloadedFile.exists()) {
-            throw new RuntimeException("The file was not downloaded");
-        }
-
-        return true;
     }
 
     public ReaderPage clickReadInBrowser() {
@@ -85,33 +51,4 @@ public class BookDetailsPage {
         return new ReaderPage(driver);
     }
 
-    public HomePage markAsRead() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(readCheckbox));
-
-        if (!checkbox.isSelected()) {
-            checkbox.click();
-        }
-        driver.navigate().refresh();
-        return new HomePage(driver);
-    }
-
-    public boolean isMarkedAsRead() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(readCheckbox));
-        return checkbox.isSelected();
-    }
-
-    public ISBNPage clickIsbnButton() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(isbnButton));
-
-        button.click();
-
-        for (String handle : driver.getWindowHandles()) {
-            driver.switchTo().window(handle);
-        }
-
-        return new ISBNPage(driver);
-    }
 }

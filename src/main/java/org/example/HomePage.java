@@ -14,14 +14,8 @@ import java.time.Duration;
 public class HomePage {
     private WebDriver driver;
 
-    //@FindBy(xpath = "//a[@href='/book/10']")
-    //private WebElement firstBook;
-
     @FindBy(id = "query")
     private WebElement searchField;
-
-    @FindBy(id = "flash_success")
-    private WebElement successMessage;
 
     public HomePage(WebDriver driver){
         this.driver = driver;
@@ -35,7 +29,6 @@ public class HomePage {
         WebElement book = wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector(bookcssSelector))));
 
         book.click();
-        //driver.findElement(By.cssSelector("a[href=\"/book/10\"]")).click();
         return new BookDetailsPage(driver);
     }
 
@@ -44,17 +37,7 @@ public class HomePage {
         searchField.sendKeys(bookTitle);
         searchField.submit();
 
-
         return new SearchResult(driver);
-        /*WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement resultTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("p.title")));
-        return resultTitle.getText();*/
-    }
-
-    public String getSuccessMessage() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement successMessageWait = wait.until(ExpectedConditions.visibilityOf(successMessage));
-        return successMessageWait.getText();
     }
 
 }

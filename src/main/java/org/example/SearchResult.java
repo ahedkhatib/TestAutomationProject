@@ -42,18 +42,16 @@ public class SearchResult {
     public int countResults(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement result = wait.until(ExpectedConditions.visibilityOf(resultTitle));
-        //WebElement element = driver.findElement(By.cssSelector(".discover h2"));
         String text = result.getText();
-        int number_of_results =0;
+        int numberResults = 0;
 
-        for(char c :text.toCharArray()){
-            if(c<'0'||c>'9'){
+        for(char c: text.toCharArray()){
+            if(c < '0'|| c > '9'){
                 break;
             }
-            number_of_results=number_of_results*10+ (int) c-'0';
+            numberResults = numberResults * 10 + (int) c -'0';
         }
 
-        return number_of_results;
-
+        return numberResults;
     }
 }

@@ -180,6 +180,15 @@ public class EditMetadataTest {
         assertEquals("Language: English", actualLanguage);
     }
 
+    @Test
+    public void testDeletePublishedDate() {
+        String successMessage = loginAndEditMetadata("9")
+                .deletePublishedDate()
+                .getMessage();
+
+        assertEquals("Metadata successfully updated", successMessage);
+    }
+
     @AfterEach
     public void tearDown() {
         driver.quit();

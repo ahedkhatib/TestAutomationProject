@@ -47,6 +47,9 @@ public class EditMetadataPage {
     @FindBy(id = "languages")
     private WebElement languageField;
 
+    @FindBy(id = "pubdate_delete")
+    private WebElement publishedDateDelete;
+
     public EditMetadataPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -104,71 +107,17 @@ public class EditMetadataPage {
         return new VerifyUpdatedMetadataPage(driver);
     }
 
-
-    /// *******************************
-    /*public VerifyUpdatedMetadataPage modifyTitleMetadata(String newTitle){
-        titleField.clear();
-        titleField.sendKeys(newTitle);
-
-        saveButton.click();
-
-        return new VerifyUpdatedMetadataPage(driver);
-    }
-
-    public VerifyUpdatedMetadataPage modifyAuthorMetadata(String newAuthor){
-        authorField.clear();
-        authorField.sendKeys(Keys.CONTROL + "a");
-        authorField.sendKeys(Keys.DELETE);
-        authorField.sendKeys(newAuthor);
+    public VerifyUpdatedMetadataPage deletePublishedDate() {
+        if (publishedDate.getText() != null ){
+            publishedDateDelete.click();
+        }
 
         saveButton.click();
 
         return new VerifyUpdatedMetadataPage(driver);
     }
 
-    public VerifyUpdatedMetadataPage modifyTagMetadata(String newTag){
-        tagField.clear();
-        tagField.sendKeys(Keys.CONTROL + "a");
-        tagField.sendKeys(Keys.DELETE);
-        tagField.sendKeys(newTag);
-
-        saveButton.click();
-
-        return new VerifyUpdatedMetadataPage(driver);
-    }
-
-    public VerifyUpdatedMetadataPage modifySeriesMetadata(String newSeries){
-        seriesField.clear();
-        seriesField.sendKeys(Keys.CONTROL + "a");
-        seriesField.sendKeys(Keys.DELETE);
-        seriesField.sendKeys(newSeries);
-
-        saveButton.click();
-
-        return new VerifyUpdatedMetadataPage(driver);
-    }
-
-    public VerifyUpdatedMetadataPage modifySeriesIdMetadata(String newSeriesId){
-        seriesId.clear();
-        seriesId.sendKeys(Keys.CONTROL + "a");
-        seriesId.sendKeys(Keys.DELETE);
-        seriesId.sendKeys(newSeriesId);
-
-        saveButton.click();
-
-        return new VerifyUpdatedMetadataPage(driver);
-    }
-
-    public VerifyUpdatedMetadataPage modifyRating(int ratingValue) {
-        WebElement star = ratingContainer.findElement(By.cssSelector("i[data-value='" + ratingValue + "']"));
-        star.click();
-
-        saveButton.click();
-
-        return new VerifyUpdatedMetadataPage(driver);
-    }
-
-    *//*public String clearRating() {
+    /*public String clearRating() {
         //WebElement clearRatingButton = driver.findElement(By.cssSelector("a.rating-clear"));
 
         if (clearRatingButton.isDisplayed()) {
@@ -181,37 +130,5 @@ public class EditMetadataPage {
             return successMessage.getText();
         }
         return "Clear rating button is not visible";
-    }*//*
-
-    public VerifyUpdatedMetadataPage modifyPublishedDate(String newDate) {
-        publishedDate.clear();
-        publishedDate.sendKeys(newDate);
-
-        saveButton.click();
-
-        return new VerifyUpdatedMetadataPage(driver);
-    }
-
-    public VerifyUpdatedMetadataPage modifyPublisher(String newPublisher) {
-        publisherField.clear();
-        publisherField.sendKeys(Keys.CONTROL + "a");
-        publisherField.sendKeys(Keys.DELETE);
-        publisherField.sendKeys(newPublisher);
-
-        saveButton.click();
-
-        return new VerifyUpdatedMetadataPage(driver);
-    }
-
-    public VerifyUpdatedMetadataPage modifyLanguage(String newLanguage) {
-        languageField.clear();
-        languageField.sendKeys(Keys.CONTROL + "a");
-        languageField.sendKeys(Keys.DELETE);
-        languageField.sendKeys(newLanguage);
-
-        saveButton.click();
-
-        return new VerifyUpdatedMetadataPage(driver);
     }*/
-
 }
