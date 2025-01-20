@@ -18,7 +18,7 @@ import static org.example.DriverFactory.getDriver;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ReadInBrowserTest {
-    private static final String BASE_URL = "https://5f69-2a06-c701-7116-c00-1677-13ff-c635-10a9.ngrok-free.app/login";
+    private static final String BASE_URL = "https://a050-2a06-c701-7116-c00-1677-13ff-c635-10a9.ngrok-free.app/login";
     private static final String USERNAME = "admin";
     private static final String PASSWORD = "admin123";
     private static final int WAIT_TIMEOUT = 5;
