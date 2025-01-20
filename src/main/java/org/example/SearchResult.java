@@ -28,7 +28,6 @@ public class SearchResult {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement resultTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("p.title")));
 
-        System.out.println(resultTitle.getText());
         return resultTitle.getText().contains(bookTitle);
     }
 
