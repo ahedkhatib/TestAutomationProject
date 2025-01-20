@@ -15,7 +15,9 @@ public class ReaderPage {
         wait.until(ExpectedConditions.urlContains("/read"));
     }
 
-    public Boolean isReaderPageOpened() {
-        return driver.getCurrentUrl().contains("read");
+    public Boolean isReaderPageOpened(String bookId) {
+        boolean checkId = driver.getCurrentUrl().contains(bookId);
+
+        return checkId && driver.getCurrentUrl().contains("read");
     }
 }

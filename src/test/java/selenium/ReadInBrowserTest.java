@@ -47,7 +47,7 @@ public class ReadInBrowserTest {
                 .loginAs(USERNAME, PASSWORD)
                 .openBookById("10")
                 .clickReadInBrowser()
-                .isReaderPageOpened();
+                .isReaderPageOpened("10");
 
         assertTrue(isReaderOpened);
     }
