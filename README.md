@@ -55,8 +55,8 @@ git clone https://github.com/ahedkhatib/TestAutomationProject
 
 2. Set Up Dependencies:
 - Install Maven for Java project management:
-- For Linux: sudo apt install maven 
-- For Windows: Download the Maven binary from [Maven Download Page](https://maven.apache.org/download.cgi), extract it, and add the `bin` directory to the PATH environment variable.
+     - For Linux: sudo apt install maven 
+     - For Windows: Download the Maven binary from [Maven Download Page](https://maven.apache.org/download.cgi), extract it, and add the `bin` directory to the PATH environment variable.
 - Install Python 3.7 or later.
 - Install the Calibre Database API.
 3. Prepare Test Data:
