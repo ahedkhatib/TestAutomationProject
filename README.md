@@ -2,10 +2,10 @@
 
 This project involves testing the functionalities of **Calibre-Web**, an open-source e-book library manager. The primary features tested include:
 
-        - Search Functionality
-        - Metadata Editing
-        - Reading in Browser
-        - Database Integration
+- Search Functionality
+- Metadata Editing
+- Reading in Browser
+- Database Integration
 
 The tests ensure the application meets its functional and usability requirements while maintaining reliability and performance.
 
