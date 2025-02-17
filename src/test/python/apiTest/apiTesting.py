@@ -16,6 +16,7 @@ class TestCalibreLibrary(unittest.TestCase):
     def test_all_book_ids(self):
         """Test fetching all book IDs."""
         all_ids = self.calibre_db.all_book_ids()
+        print("all ids = ", all_ids)
         self.assertEqual(all_ids, {2, 5, 6, 7, 8, 9, 10}, "all_book_ids did not return a list")
 
     def test_has_id(self):
