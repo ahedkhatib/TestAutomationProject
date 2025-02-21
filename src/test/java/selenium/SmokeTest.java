@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SmokeTest {
-    private static final String BASE_URL = "https://b827-2a06-c701-7128-9b00-9800-a72e-7239-d87.ngrok-free.app/login";
+    private static final String BASE_URL = "https://9b39-2a06-c701-7128-9b00-9800-a72e-7239-d87.ngrok-free.app/login";
     private static final String USERNAME = "admin";
     private static final String PASSWORD = "admin123";
     private static final int WAIT_TIMEOUT = 5;
