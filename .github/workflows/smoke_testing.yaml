@@ -18,7 +18,7 @@ jobs:
   TestChrome_131_0:
     name: Test Chrome 131.0
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.chrome_131_0 == 'true' }}
+    if: ${{ github.event.inputs.chrome_131_0 == true }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
