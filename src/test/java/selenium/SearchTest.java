@@ -19,7 +19,7 @@ import static org.example.DriverFactory.getDriver;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SearchTest {
-    private static final String BASE_URL = "https://ef68-2a06-c701-7128-9b00-b82c-6331-2156-3a97.ngrok-free.app/login";
+    private static final String BASE_URL = " https://a350-2a06-c701-7128-9b00-991-b95e-867f-1e62.ngrok-free.app/login";
     private static final String USERNAME = "admin";
     private static final String PASSWORD = "admin123";
     private static final int WAIT_TIMEOUT = 5;
