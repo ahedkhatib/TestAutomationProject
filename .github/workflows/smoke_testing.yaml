@@ -1,5 +1,10 @@
 name: Smoke testing
 
+permissions:
+  contents: read
+  actions: read
+  checks: write
+
 on:
   workflow_dispatch:
     inputs:
@@ -43,3 +48,11 @@ jobs:
           
           # Tear down grid if exists
           docker stop grid_container || true
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: chrome report smoke tests
+          path: 'target/surefire-reports/TEST-*.xml'
+          reporter: java-junit
