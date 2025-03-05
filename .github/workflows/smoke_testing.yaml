@@ -41,7 +41,6 @@ jobs:
 
       - name: Run Tests
         run: |
-          rm -rf target/surefire-reports/*  # Delete previous test reports
           export BROWSER=chrome
           export GRID_URL=${{ github.event.inputs.grid_url }}
           
