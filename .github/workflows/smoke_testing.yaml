@@ -48,7 +48,14 @@ jobs:
           
           # Tear down grid if exists
           docker stop grid_container || true
-          
+
+      - name: Upload Test Results
+        if: success() || failure()  # Ensure results are uploaded even if tests fail
+        uses: actions/upload-artifact@v3
+        with:
+          name: smoke-test-results
+          path: target/surefire-reports/TEST-*.xml
+
 
   GenerateTestReport:
     name: Generate Test Report
