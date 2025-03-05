@@ -49,10 +49,20 @@ jobs:
           # Tear down grid if exists
           docker stop grid_container || true
 
-      - name: Test Report
-        uses: dorny/test-reporter@v1
-        if: success() || failure()
+  GenerateTestReport:
+    name: Generate Test Report
+    runs-on: ubuntu-latest
+    needs: TestChrome_131_0  # This job runs only after TestChrome_131_0 finishes
+    steps:
+      - name: Download Test Results
+        uses: actions/download-artifact@v3
         with:
-          name: chrome report smoke tests
-          path: 'target/surefire-reports/TEST-*.xml'
+          name: smoke-test-results
+          path: target/surefire-reports/
+
+      - name: Generate Report
+        uses: dorny/test-reporter@v1
+        with:
+          name: Chrome Test Report
+          path: target/surefire-reports/TEST-*.xml
           reporter: java-junit
