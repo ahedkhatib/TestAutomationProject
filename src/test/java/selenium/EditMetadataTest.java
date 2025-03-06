@@ -30,7 +30,6 @@ public class EditMetadataTest {
     private WebDriver driver;
 
 
-
     @BeforeEach
     public void setUp() {
         driver = getDriver();
